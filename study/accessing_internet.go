@@ -12,15 +12,25 @@ var todoJSON = []byte(`
   "userId": 1,
   "id": 1,
   "title": "delectus aut autem",
-  "completed": false
+  "completed": false,
+  "comment" : {
+	  "userId": 2,
+	  "message": "just do it"
+  }
 }
 `)
 
+type Comment struct {
+	UserID int    `json:"userId"`
+	Msg    string `json:"message"`
+}
+
 type todo struct {
-	UserID    int    `json:"userId"`
-	ID        int    `json:"id"`
-	Title     string `json:"title"`
-	Completed bool   `json:"completed"`
+	UserID      int     `json:"userId"`
+	ID          int     `json:"id"`
+	Title       string  `json:"title"`
+	Completed   bool    `json:"completed"`
+	LastComment Comment `json:"comment"`
 }
 
 func getBodyBytesFromAPI(url string) []byte {
@@ -31,8 +41,9 @@ func getBodyBytesFromAPI(url string) []byte {
 }
 
 func (o *todo) toString() string {
-	return fmt.Sprintf("UserID=%d ID=%d Title=%s Completed=%t",
-		o.UserID, o.ID, o.Title, o.Completed)
+	return fmt.Sprintf(`UserID=%d ID=%d Title=%s Completed=%t
+	LastCommentMessage=%s 
+	`, o.UserID, o.ID, o.Title, o.Completed, o.LastComment.Msg)
 }
 
 func (o *todo) toJSONString() (string, error) {
