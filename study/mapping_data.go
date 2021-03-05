@@ -58,6 +58,10 @@ func (m MapContact) showContacts() {
 	}
 }
 
+func (m MapContact) deleteByID(id int) {
+	delete(m, id)
+}
+
 func main() {
 	contacts := new(Contacts)
 	// var contacts Contacts
@@ -66,4 +70,7 @@ func main() {
 
 	contacts.toMap().showContacts()
 
+	m := contacts.toMap()
+	m.deleteByID(1)
+	m.showContacts()
 }
