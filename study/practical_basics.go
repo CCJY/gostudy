@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// Grades have name and id
 type Grades map[string]float32
 
 func (grades Grades) initialGrades() {
@@ -10,11 +11,21 @@ func (grades Grades) initialGrades() {
 	grades["Yummi"] = 22
 }
 
+func (grades Grades) showGrades() {
+	fmt.Println(grades)
+}
+
+func (grades Grades) showPrettyGrades() {
+	for k, v := range grades {
+		fmt.Println(k, ":", v)
+	}
+}
+
 func main() {
 	grades := make(Grades)
 	grades.initialGrades()
 
-	for k, v := range grades {
-		fmt.Println("name: ", k, "grade: ", v)
-	}
+	grades.showGrades()
+	delete(grades, "Zed")
+	grades.showPrettyGrades()
 }
