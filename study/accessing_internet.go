@@ -7,6 +7,15 @@ import (
 	"net/http"
 )
 
+var todoJSON = []byte(`
+{
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+}
+`)
+
 type todo struct {
 	UserID    int    `json:"userId"`
 	ID        int    `json:"id"`
@@ -44,10 +53,11 @@ func todoFromBytes(bytes []byte) (*todo, error) {
 }
 
 func main() {
-	var url string = "https://jsonplaceholder.typicode.com/todos/1"
-	var bytes []byte = getBodyBytesFromAPI(url)
+	// var url string = "https://jsonplaceholder.typicode.com/todos/1"
+	// var bytes []byte = getBodyBytesFromAPI(url)
+	// t, err := todoFromBytes(bytes)
 
-	t, err := todoFromBytes(bytes)
+	t, err := todoFromBytes(todoJSON)
 	if err != nil {
 		fmt.Println(err.Error())
 	}
