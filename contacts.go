@@ -5,19 +5,6 @@ import (
 	"fmt"
 )
 
-var contactJSON = []byte(`
-[
-	{
-	"userId": 1,
-	"name": "Zed"
-	},
-	{
-	"userId": 2,
-	"name": "Yasuo"
-	}
-]
-`)
-
 // Contact is ..
 type Contact struct {
 	UserID int    `json:"userId"`
@@ -60,17 +47,4 @@ func (m MapContact) showContacts() {
 
 func (m MapContact) deleteByID(id int) {
 	delete(m, id)
-}
-
-func main() {
-	contacts := new(Contacts)
-	// var contacts Contacts
-	contacts.initialContact(contactJSON)
-	contacts.showContacts()
-
-	contacts.toMap().showContacts()
-
-	m := contacts.toMap()
-	m.deleteByID(1)
-	m.showContacts()
 }

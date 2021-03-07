@@ -39,7 +39,7 @@ func (c *Car) toJSONString() string {
 	return string(b)
 }
 
-func main() {
+func TestStructs() {
 	aCar := &Car{GasPedal: 2234,
 		BrakePedal: 0, SteeringWhell: 12561,
 		TopSpeedKmh: 225.0,

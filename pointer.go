@@ -7,7 +7,7 @@ func referenceTest() *int {
 	return &a
 }
 
-func main() {
+func TestPointer() {
 	x := 15
 	a := &x
 	fmt.Println(a)

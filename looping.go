@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func main() {
+func TestLooping() {
 	loop := 2
 	i := 0
 	for i < loop {

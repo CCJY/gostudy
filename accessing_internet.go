@@ -7,19 +7,7 @@ import (
 	"net/http"
 )
 
-var todoJSON = []byte(`
-{
-  "userId": 1,
-  "id": 1,
-  "title": "delectus aut autem",
-  "completed": false,
-  "comment" : {
-	  "userId": 2,
-	  "message": "just do it"
-  }
-}
-`)
-
+// Comment is ...
 type Comment struct {
 	UserID int    `json:"userId"`
 	Msg    string `json:"message"`
@@ -61,18 +49,4 @@ func todoFromBytes(bytes []byte) (*todo, error) {
 		return nil, err
 	}
 	return t, nil
-}
-
-func main() {
-	// var url string = "https://jsonplaceholder.typicode.com/todos/1"
-	// var bytes []byte = getBodyBytesFromAPI(url)
-	// t, err := todoFromBytes(bytes)
-
-	t, err := todoFromBytes(todoJSON)
-	if err != nil {
-		fmt.Println(err.Error())
-	}
-
-	fmt.Println(t.toJSONString())
-	fmt.Println(t.toString())
 }

@@ -21,7 +21,7 @@ func (grades Grades) showPrettyGrades() {
 	}
 }
 
-func main() {
+func TestMapBasics() {
 	grades := make(Grades)
 	grades.initialGrades()
 

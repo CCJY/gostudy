@@ -24,7 +24,7 @@ func multiple(a, b string) (string, string) {
 	return a, b
 }
 
-func main() {
+func TestHelloworld() {
 	foo()
 	bar()
 	var a, b int = 10, 11
