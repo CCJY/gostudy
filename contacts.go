@@ -3,6 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"io/ioutil"
+	"net/http"
 )
 
 // Contact is ..
@@ -22,6 +24,17 @@ func (contacts *Contacts) initialContact(bytes []byte) {
 	if err != nil {
 		fmt.Println("err:", err.Error())
 	}
+}
+
+func fetchContact(c chan Contact, url string) {
+	var contact Contact
+	resp, _ := http.Get(url)
+	bytes, _ := ioutil.ReadAll(resp.Body)
+	err := json.Unmarshal(bytes, &contact)
+	if err != nil {
+		fmt.Println("err:", err.Error())
+	}
+	c <- contact
 }
 
 func (contacts Contacts) showContacts() {

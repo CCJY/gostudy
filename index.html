@@ -1,2 +1,19 @@
 <h1>{{.Title}}</h1>
 <p>{{.Msg}}</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>userID</th>
+            <th>name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{ range $contact := .Contacts}}
+        <tr>
+            <td>{{$contact.UserID}}</td>
+            <td>{{$contact.Name}}</td>
+        </tr>
+        {{end}}
+    </tbody>
+</table>
